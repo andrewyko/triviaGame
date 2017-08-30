@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trivia Game!</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="js/game.js"></script>
+</head>
+<body>
+	<div class="jumbotron" style="background-color: black; color:white">
+			<h1 style="text-align: center">Movie Trivia Quiz</h1>
+			<p style="text-align: center">Test your knowledge</p>
+	</div>
+
+<div style="font-weight: bold" id="quiz-time-left"></div>
+<script type="text/javascript">
+var max_time = <?php echo $row_2['num_timer'] ?>;
+var c_seconds  = 0;
+var total_seconds =60*max_time;
+max_time = parseInt(total_seconds/60);
+c_seconds = parseInt(total_seconds%60);
+document.getElementById("quiz-time-left").innerHTML='Time Left: ' + max_time + ' minutes ' + c_seconds + ' seconds';
+function init(){
+document.getElementById("quiz-time-left").innerHTML='Time Left: ' + max_time + ' minutes ' + c_seconds + ' seconds';
+setTimeout("CheckTime()",999);
+}
+function CheckTime(){
+document.getElementById("quiz-time-left").innerHTML='Time Left: ' + max_time + ' minutes ' + c_seconds + ' seconds' ;
+if(total_seconds <=0){
+setTimeout('document.quiz.submit()',1);
+    
+    } else
+    {
+total_seconds = total_seconds -1;
+max_time = parseInt(total_seconds/60);
+c_seconds = parseInt(total_seconds%60);
+setTimeout("CheckTime()",999);
+}
+
+}
+init();
+</script>
+	
+		<section>
+			<div id="results"></div>
+			<form name="quizForm" onsubmit="return submitAnswers()">
+
+				<div class="panel panel-default">
+  				<div class="panel-heading">
+   					<h3 class="panel-title">1. The Wolf of Wall Street movie is based on the true story of which former American stock broker?</h3>
+  				</div>
+ 				 	<div class="panel-body">
+						<input type="radio" name="q1" value="a" id="q1a"> Mark Hanna<br>
+						<input type="radio" name="q1" value="b" id="q1b"> Jordan Belfort<br>
+						<input type="radio" name="q1" value="c" id="q1c"> Donnie Azoff<br>
+						<input type="radio" name="q1" value="d" id="q1d"> Manny Riskin<br>
+ 					</div>
+				</div>
+
+				<div class="panel panel-default">
+  				<div class="panel-heading">
+   					<h3 class="panel-title">2. What type of fish is Dory from the 2003 movie 'Finding Nemo'?
+   					</h3>
+   				</div>
+ 				 	<div class="panel-body">
+				<input type="radio" name="q2" value="a" id="q2a"> Blue Tang Fish<br>
+				<input type="radio" name="q2" value="b" id="q2b"> Percula Clownfish<br>
+				<input type="radio" name="q2" value="c" id="q2c"> Yellow Tang<br>
+				<input type="radio" name="q2" value="d" id="q2d"> Moorish Idol<br>
+					</div>
+				</div>
+
+				<div class="panel panel-default">
+  				<div class="panel-heading">
+   					<h3 class="panel-title">3. Who directed the horror film 'Alien'?</h3>
+   				</div>
+ 				 	<div class="panel-body">
+				<input type="radio" name="q3" value="a" id="q3a"> Stanley Kubrick<br>
+				<input type="radio" name="q3" value="b" id="q3b"> George Lucas<br>
+				<input type="radio" name="q3" value="c" id="q3c"> Ridley Scott<br>
+				<input type="radio" name="q3" value="d" id="q3d"> Alfonso Cuaron<br>
+					</div>
+				</div>
+
+				<div class="panel panel-default">
+  				<div class="panel-heading">
+   					<h3 class="panel-title">4. In which film series do Marlon Brando and Al Pacino star as leaders of a New York mafia family?</h3>
+   				</div>
+ 				 	<div class="panel-body">
+				<input type="radio" name="q4" value="a" id="q4a"> Casino<br>
+				<input type="radio" name="q4" value="b" id="q4b"> Goodfellas<br>
+				<input type="radio" name="q4" value="c" id="q4c"> The Godfather<br>
+				<input type="radio" name="q4" value="d" id="q4d"> The Departed<br>
+					</div>
+				</div>
+
+				<div class="panel panel-default">
+  				<div class="panel-heading">
+   					<h3 class="panel-title">5. In which movie does Jim Carey unknowingly star as the main character in his own reality television show?</h3>
+   				</div>
+ 				 	<div class="panel-body">
+				<input type="radio" name="q5" value="a" id="q5a"> The Truman Show<br>
+				<input type="radio" name="q5" value="b" id="q5b"> Liar Liar<br>
+				<input type="radio" name="q5" value="c" id="q5c"> Eternal Sunshine of the Spotless Mind<br>
+				<input type="radio" name="q5" value="d" id="q5d"> The Mask<br>
+					</div>
+				</div>
+
+				<br>
+				<input type="submit" value="Sumbit Answers">
+			</form>
+		</section>
+		<br>
+		<footer>
+			<p> Copy Right Reserved</p>
+		</footer>
+
+
+
+
+
+			</form>
+
+
+	</div>
+
+</body>
+</html>
